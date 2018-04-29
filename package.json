@@ -1,0 +1,49 @@
+{
+  "name": "node-typescript-seed",
+  "version": "0.0.1",
+  "description": "A simple Node/TypeScript seed to connect with Gcloud Datastore Buckets",
+  "main": "src/app/app.ts",
+  "scripts": {
+    "clean": "rimraf build",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node ./build/app/app.js",
+    "forever": "forever start ./build/app/app.js",
+    "predev": "npm run clean",
+    "dev": "concurrently \"npm run tsc-watch\" \"npm run nodemon\"",
+    "prenodemon": "wait-on ./build/app/app.js",
+    "nodemon": "nodemon --delay 1500ms \"./build/app/app.js\"",
+    "tsc-watch": "tsc -w",
+    "lint": "tslint -c tslint.json \"./src/**/*.ts\""
+  },
+  "author": "Xavi Hidalgo <xavi.hidalgo.fernandez@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/datastore": "^1.4.0",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.12.0",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "ts-node": "^6.0.1",
+    "ts-promise": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/chai": "~3.5.2",
+    "@types/google-cloud__datastore": "^1.3.1",
+    "@types/mocha": "~2.2.41",
+    "@types/node": "^7.0.52",
+    "chai": "~3.5.0",
+    "concurrently": "^3.1.0",
+    "mocha": "~3.2.0",
+    "nodemon": "^1.11.0",
+    "rimraf": "^2.5.4",
+    "tslint": "^3.15.1",
+    "typescript": "^2.7.2",
+    "wait-on": "^1.5.3"
+  }
+}
